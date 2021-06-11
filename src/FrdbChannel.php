@@ -33,7 +33,6 @@ class FrdbChannel
             if (method_exists($notification, 'frdbStoreMethod')) {
                 $storeMethod = $notification->frdbStoreMethod($notifiable);
             }
-
             // $database->getReference("$ref")->$storeMethod($data);
             call_user_func([$database->getReference("$ref"), $storeMethod], $data);
         } catch (Exception $ex) {
@@ -70,7 +69,9 @@ class FrdbChannel
             return $notification->frdbReference($notifiable) ?: null;
         }
 
-        return get_class($notification);
+        $ref = str_replace('\\', '/', get_class($notification));
+
+        return '/' . $ref . '/' . ($notifiable->id ?? '');
     }
 
     /**

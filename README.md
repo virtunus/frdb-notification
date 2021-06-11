@@ -69,7 +69,7 @@ cp vendor/kreait/laravel-firebase/config/firebase.php config/firebase.php
 > This configuration is copied from https://github.com/kreait/laravel-firebase#configuration
 
 ### Usage
-Return `FrdbChannel::class` from `via` method in your notification class.
+Just return `FrdbChannel::class` from `via` method in your notification class.
 
 The sample notification class:
     
@@ -107,7 +107,7 @@ The sample notification class:
         }
     }
 
-By default the reference will be the **namespace** of the notification class, In this case `App\Notifications\SampleNotification`.
+By default the reference will be the **namespace** of the notification class, In this case `/App/Notifications/SampleNotification/{notifiable-id}`.
 
 You can customize the default behaviour as follows
 
@@ -177,7 +177,7 @@ You can customize the default behaviour as follows
         */
         public function frdbReference($notifiable): string
         {
-            return 'firebase-database-ref';
+            return '/firebase-database-ref';
         }
     }
 

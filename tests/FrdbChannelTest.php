@@ -17,14 +17,14 @@ class FrdbChannelTest extends TestCase
         $channel = new FakeFrdbChannel();
 
         $notifiable = new AnonymousNotifiable();
-
+        $notifiable->id = 1;
         $resp = $channel->send($notifiable, $notification);
 
         $this->assertEquals('notification sent', $resp);
 
         $this->assertEquals($channel->data, $notification->toArray($notifiable));
 
-        $this->assertEquals(SampleNotification::class, $channel->reference);
+        $this->assertEquals('/Virtunus/FrdbNotification/Tests/Fixtures/SampleNotification/1', $channel->reference);
     }
 
     /** @test */
