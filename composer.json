@@ -1,0 +1,40 @@
+{
+    "name": "virtunus/frdb-notification",
+    "description": "Laravel package for firebase realtime database notification",
+    "type": "laravel-package",
+    "license": "MIT",
+    "authors": [{
+        "name": "Md Mahbub Rabbani",
+        "email": "mahbub.rucse@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Virtunus\\FrdbNotification\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Virtunus\\FrdbNotification\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "laravel-notification-channels/fcm": "~2.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Virtunus\\FrdbNotification\\FrdbNotificationServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter",
+        "test-w": "vendor\\bin\\phpunit",
+        "test-wf": "vendor\\bin\\phpunit --filter"
+    }
+}
