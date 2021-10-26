@@ -21,6 +21,10 @@ class FrdbChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        if (config('firebase-channel.enabled') != true) {
+            return;
+        }
+
         try {
             $ref = $this->getFrdbReference($notifiable, $notification);
 

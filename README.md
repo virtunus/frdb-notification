@@ -3,6 +3,7 @@
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Disable Notification](#disable-notification)
 
 
 ### Introduction
@@ -183,3 +184,8 @@ You can customize the default behaviour as follows
 
 
 The default store method this `set`. The supported store methods are `set`, `push`, `delete` etc. To know more details checkout [saving data](https://firebase-php.readthedocs.io/en/stable/realtime-database.html#saving-data).
+
+### Disable Notification
+Sometimes you may wish to disable firebase notification specially in development environment. Just set `false` to the `FIREBASE_NOTIFICATION_ENABLED` environment variable as:
+
+    FIREBASE_NOTIFICATION_ENABLED=false 
