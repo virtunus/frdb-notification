@@ -14,6 +14,16 @@ use Virtunus\FrdbNotification\Tests\Fixtures\SampleCustomizableNotification;
 class FrdbNotificationTest extends TestCase
 {
     /** @test */
+    public function it_does_not_send_notification_if_disabled_from_config()
+    {
+        config(['firebase-channel.enabled' => false]);
+
+        $notifiable  = new AnonymousNotifiable();
+        Notification::send($notifiable, new SampleNotification());
+        $this->assertTrue(true);
+    }
+
+    /** @test */
     public function it_expects_send_method_of_channel_is_called()
     {
         $mock = $this->mock(FrdbChannel::class, function (MockInterface $mock) {
