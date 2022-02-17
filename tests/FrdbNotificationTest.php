@@ -35,7 +35,7 @@ class FrdbNotificationTest extends TestCase
         Notification::send($notifiable, new SampleNotification());
     }
 
-    /** @test */
+    /** @test-1 */
     public function it_expects_notification_data_sent_to_frdb_by_default_set_method()
     {
         $ref = $this->mock(Reference::class, function (MockInterface $mock) {
@@ -45,14 +45,14 @@ class FrdbNotificationTest extends TestCase
         $mock = $this->mock(Database::class, function (MockInterface $mock) use ($ref) {
             $mock->shouldReceive('getReference')->once()->andReturn($ref);
         });
-        
+
         $notifiable  = new AnonymousNotifiable();
         $notifiable->id = 1;
- 
+
         Notification::send($notifiable, new SampleNotification());
     }
 
-    /** @test */
+    /** @test-1 */
     public function it_expects_notification_data_sent_to_frdb_by_custom_push_method()
     {
         $ref = $this->mock(Reference::class, function (MockInterface $mock) {
@@ -62,14 +62,14 @@ class FrdbNotificationTest extends TestCase
         $mock = $this->mock(Database::class, function (MockInterface $mock) use ($ref) {
             $mock->shouldReceive('getReference')->once()->andReturn($ref);
         });
-        
+
         $notifiable  = new AnonymousNotifiable();
         $notifiable->id = 1;
- 
+
         Notification::send($notifiable, new SampleCustomizableNotification());
     }
-    
-    /** @test */
+
+    /** @test-1 */
     public function it_expects_customizable_methods_are_called()
     {
         $ref = $this->mock(Reference::class, function (MockInterface $mock) {
@@ -79,10 +79,10 @@ class FrdbNotificationTest extends TestCase
         $mock = $this->mock(Database::class, function (MockInterface $mock) use ($ref) {
             $mock->shouldReceive('getReference')->once()->andReturn($ref);
         });
-        
+
         $notifiable  = new AnonymousNotifiable();
         $notifiable->id = 1;
-        
+
         $notification = $this->mock(SampleCustomizableNotification::class, function (MockInterface $mock) {
             $mock->shouldReceive([
                 'via' => FrdbChannel::class,
